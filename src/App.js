@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react';
+import api from './api';
 
-function App() {
+export default function App() {
+
+  useEffect(() => {
+    api
+      .get('psyduck')
+      .then((response) => console.log(response.data))
+      .catch((err) => {
+        console.error('Opa, deu ruim: ' + err);
+      });
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <h1 style={{margin: 100, textAlign: 'center'}} >Oi, meu anjo!</h1>
+    <p style={{margin: 50, textAlign: 'center'}} >Dá uma olhadinha no console, por gentileza :)</p>
+    <img 
+    style={{width: '25%', marginLeft: '65%'}} 
+    src='https://cdn2.bulbagarden.net/upload/thumb/5/53/054Psyduck.png/600px-054Psyduck.png'
+    alt='Psyduck, o pokemon mais fofo'
+    />
+    </>
   );
 }
-
-export default App;
